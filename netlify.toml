@@ -1,0 +1,27 @@
+# jerry is a module federation remote: world loads remoteEntry.js from this
+# origin as a cross origin module script, so every asset here needs CORS.
+# Timing-Allow-Origin lets world's probe read real transfer sizes.
+
+[build]
+  publish = "dist"
+  command = "bun run build"
+
+# vite.config.ts bakes this into every chunk URL, because world resolves them
+# from a page on its own origin, not from jerry's index.html. Trailing slash
+# is required.
+[build.environment]
+  JERRY_ORIGIN = "https://jerry-remote.netlify.app/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Timing-Allow-Origin = "*"
+
+# Standalone, jerry is a client routed SPA (/golf, /jerryboree, /complaints).
+# Netlify serves a matching static file first, so remoteEntry.js and /assets/*
+# are untouched by this; only unmatched paths fall through to the app shell.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
