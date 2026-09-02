@@ -1,0 +1,35 @@
+{
+  "name": "micro-fe-prototype--guest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "jerry: a guest remote for micro-fe-prototype, built and served from its own repo, loaded by the world shell over module federation",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "bun run build && bun run preview",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "wouter": "^3.10.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@module-federation/vite": "^1.20.7",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.6"
+  },
+  "trustedDependencies": [
+    "esbuild"
+  ],
+  "engines": {
+    "bun": ">=1.2.0"
+  }
+}

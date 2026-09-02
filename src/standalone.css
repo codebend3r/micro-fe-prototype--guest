@@ -1,0 +1,106 @@
+/*
+ * Only the standalone page loads this. It supplies what world's document would
+ * otherwise supply: the theme tokens and a page to sit in. Values match
+ * world's stylesheet so jerry looks the same either way. When mounted inside
+ * world, none of this is loaded and world's own tokens take over.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #090d13;
+  --bg-raised: #11171f;
+  --bg-sunken: #05080c;
+  --bg-inset: #161e28;
+  --border: #1d2733;
+  --border-strong: #2d3a4a;
+
+  --text: #e7eef7;
+  --text-muted: #8798ab;
+  --text-faint: #5c6b7d;
+
+  --accent: #38bdf8;
+  --accent-ink: #04121c;
+  --accent-soft: rgba(56, 189, 248, 0.14);
+
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #fb7185;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f4f6fa;
+  --bg-raised: #ffffff;
+  --bg-sunken: #e8ecf3;
+  --bg-inset: #f0f3f8;
+  --border: #d9e0ea;
+  --border-strong: #bcc7d6;
+
+  --text: #101924;
+  --text-muted: #56657a;
+  --text-faint: #8492a5;
+
+  --accent: #0284c7;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(2, 132, 199, 0.1);
+
+  --ok: #15803d;
+  --warn: #b45309;
+  --danger: #be123c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.standalone {
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+  padding: 32px 20px;
+  margin-inline: auto;
+}
+
+.standalone-head {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  align-items: end;
+  gap: 12px;
+}
+
+.standalone-eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.standalone h1 {
+  font-size: 22px;
+}
+
+.standalone-panel {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+}

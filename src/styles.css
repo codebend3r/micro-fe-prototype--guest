@@ -1,0 +1,259 @@
+/*
+ * Jerry's stylesheet. Injected by mount() as a <style> element, so it arrives
+ * with the code whether jerry is loaded over module federation or standalone.
+ *
+ * Every class is prefixed `jerry-` because this CSS lands in world's document,
+ * next to world's own rules, and nothing here may collide with them. Colours
+ * come from the host's custom properties with a fallback for each, so jerry
+ * follows world's theme when mounted and still looks right on its own.
+ *
+ * Layout is grid plus gap. No flex, no margins.
+ */
+
+.jerry {
+  display: grid;
+  gap: 16px;
+  font-family: var(--sans, ui-sans-serif, system-ui, sans-serif);
+  color: var(--text, #e7eef7);
+}
+
+.jerry-nav {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  gap: 8px;
+}
+
+.jerry-link {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm, 6px);
+  color: var(--text-muted, #8798ab);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.jerry-link:hover {
+  color: var(--text, #e7eef7);
+  background: var(--bg-inset, #161e28);
+}
+
+.jerry-link[aria-current='true'] {
+  color: var(--accent, #38bdf8);
+  background: var(--accent-soft, rgba(56, 189, 248, 0.14));
+}
+
+.jerry-pill {
+  padding: 4px 8px;
+  border: 1px solid var(--border, #1d2733);
+  border-radius: 999px;
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  color: var(--text-muted, #8798ab);
+}
+
+.jerry-pill-accent {
+  color: var(--accent, #38bdf8);
+}
+
+.jerry-note {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--border, #1d2733);
+  border-radius: var(--radius, 10px);
+  background: var(--bg-inset, #161e28);
+  color: var(--text-muted, #8798ab);
+}
+
+.jerry-note strong {
+  color: var(--text, #e7eef7);
+}
+
+.jerry-note h2 {
+  font-size: 15px;
+  color: var(--text, #e7eef7);
+}
+
+.jerry-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;
+  align-items: center;
+  gap: 8px;
+}
+
+.jerry-rows {
+  display: grid;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+}
+
+.jerry-rowitem {
+  display: grid;
+  grid-template-columns: 1fr max-content max-content;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border, #1d2733);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--bg-raised, #11171f);
+}
+
+.jerry-rowitem-name {
+  font-weight: 600;
+}
+
+.jerry-rowitem-meta {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+  color: var(--text-faint, #5c6b7d);
+}
+
+.jerry-kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 16px;
+  align-items: baseline;
+}
+
+.jerry-kv dt {
+  color: var(--text-faint, #5c6b7d);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.jerry-kv dd {
+  font-family: var(--mono, ui-monospace, monospace);
+}
+
+.jerry-stat {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--border, #1d2733);
+  border-radius: var(--radius, 10px);
+  background: var(--bg-raised, #11171f);
+}
+
+.jerry-stat-label {
+  font-size: 12px;
+  color: var(--text-faint, #5c6b7d);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.jerry-stat-value {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--accent, #38bdf8);
+}
+
+.jerry-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.jerry-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong, #2d3a4a);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--bg-raised, #11171f);
+  color: var(--text, #e7eef7);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.jerry-btn:hover {
+  border-color: var(--accent, #38bdf8);
+}
+
+.jerry-btn:focus-visible {
+  outline: 2px solid var(--accent, #38bdf8);
+  outline-offset: 2px;
+}
+
+.jerry-btn-primary {
+  border-color: var(--accent, #38bdf8);
+  background: var(--accent, #38bdf8);
+  color: var(--accent-ink, #04121c);
+}
+
+.jerry-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.jerry-form {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 8px;
+}
+
+.jerry-input {
+  padding: 6px 10px;
+  border: 1px solid var(--border-strong, #2d3a4a);
+  border-radius: var(--radius-sm, 6px);
+  background: var(--bg-sunken, #05080c);
+  color: var(--text, #e7eef7);
+  font: inherit;
+}
+
+.jerry-input:focus-visible {
+  outline: 2px solid var(--accent, #38bdf8);
+  outline-offset: 1px;
+}
+
+.jerry-empty {
+  display: grid;
+  gap: 4px;
+  padding: 18px;
+  border: 1px dashed var(--border-strong, #2d3a4a);
+  border-radius: var(--radius, 10px);
+  color: var(--text-muted, #8798ab);
+  text-align: center;
+}
+
+.jerry-crash {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  padding: 14px;
+  border: 1px solid var(--danger, #fb7185);
+  border-radius: var(--radius, 10px);
+  color: var(--danger, #fb7185);
+}
+
+.jerry-crash code {
+  font-family: var(--mono, ui-monospace, monospace);
+  font-size: 12px;
+}
+
+.jerry-small {
+  font-size: 12px;
+}
+
+.jerry-muted {
+  color: var(--text-muted, #8798ab);
+}
+
+.jerry-mono {
+  font-family: var(--mono, ui-monospace, monospace);
+}
+
+@media (max-width: 620px) {
+  .jerry-nav,
+  .jerry-row {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+  }
+
+  .jerry-form {
+    grid-template-columns: 1fr;
+  }
+}
